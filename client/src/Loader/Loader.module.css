@@ -1,0 +1,25 @@
+/* Loader.module.css */
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loadingBar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.loadingBar .progress {
+  height: 20px;
+  background-color: red; /* Adjusted to red for visibility */
+  width: 0%; /* This will dynamically update based on the progress prop */
+  border-radius: 5px;
+  transition: width 0.4s ease;
+}
+
+.loadingText {
+  width: 150px; /* Adjust if needed */
+}
