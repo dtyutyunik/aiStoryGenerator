@@ -1,0 +1,82 @@
+.generatedStory {
+  padding-bottom: 10px;
+  width: 90%;
+  max-width: 480px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  overflow-y: auto;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 #fdf6e3;
+}
+
+/* Styles for webkit scrollbars (Chrome, Safari, newer versions of Edge) */
+.generatedStory::-webkit-scrollbar {
+  width: 8px;
+}
+
+.generatedStory::-webkit-scrollbar-track {
+  background: #fdf6e3;
+}
+
+.generatedStory::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 4px;
+}
+
+.generatedStory::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px; /* Height of the shadow */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 0.1)
+  );
+  pointer-events: none;
+}
+
+.resultContainer {
+  width: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.storyTitle {
+  margin-bottom: 20px;
+  color: #5a4b41;
+  font-size: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.storyText {
+  flex-grow: 1;
+  white-space: pre-wrap;
+  text-align: left;
+  color: #5a4b41;
+  overflow-y: auto;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .storyTitle {
+    font-size: 20px;
+  }
+
+  .generatedStory {
+    height: auto;
+    max-height: 500px;
+  }
+
+  .storyTitle,
+  .storyText {
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,41 @@
+.typewriterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+}
+
+.typewriter {
+  margin-top: 1rem;
+  color: #774411;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.25em;
+  line-height: 1.5;
+  text-align: left;
+  overflow: hidden;
+  letter-spacing: normal;
+  word-spacing: normal;
+  padding-right: 10px;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 5px;
+  width: 10px;
+  height: 1em;
+  background-color: #333;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@media (max-width: 768px) {
+  .typewriter {
+    font-size: 1em;
+    padding: 0 10px;
+  }
+}
