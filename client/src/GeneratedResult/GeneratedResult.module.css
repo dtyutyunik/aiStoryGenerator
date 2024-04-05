@@ -26,20 +26,20 @@
   border-radius: 4px;
 }
 
-.generatedStory::after {
+.scrollIndicator {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 10px; /* Height of the shadow */
+  height: 15px;
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0),
     rgba(0, 0, 0, 0.1)
   );
-  pointer-events: none;
 }
+
 
 .resultContainer {
   width: 100%;
@@ -51,7 +51,7 @@
 .storyTitle {
   margin-bottom: 20px;
   color: #5a4b41;
-  font-size: 24px;
+  font-size: 1em;
   text-align: center;
   width: 100%;
 }

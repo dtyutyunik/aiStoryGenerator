@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./GeneratedResult.module.css";
 
-const GeneratedResult = ({ story, scrollable }) => {
+const GeneratedResult = ({ story }) => {
   const containerRef = useRef(null);
   const [isScrollable, setIsScrollable] = useState(false);
-  // const [atBottom, setAtBottom] = useState(false);
 
   const lines = story.split("\n");
   const title = cleanTitle(lines[0]);
@@ -12,29 +11,29 @@ const GeneratedResult = ({ story, scrollable }) => {
 
   useEffect(() => {
     const checkScrollability = () => {
-      const { current: container } = containerRef;
-      // Check if the content height is greater than the container's height
-      const scrollable = container.scrollHeight > container.clientHeight;
+      const clientHeight = containerRef?.current?.clientHeight;
+
+      const scrollable = clientHeight > 699;
+
       setIsScrollable(scrollable);
     };
 
     checkScrollability();
 
-    // Optional: Re-check scrollability if you expect the container's size to change
     window.addEventListener("resize", checkScrollability);
     return () => window.removeEventListener("resize", checkScrollability);
-  }, [story]); // Dependency array includes `story` to re-check when story changes
+  }, [story]);
 
   return (
     <div
       ref={containerRef}
       className={`${styles.generatedStory} ${
-        isScrollable ? styles.scrollable : ""
+        isScrollable ? styles.showMoreLine : ""
       }`}
     >
       <h1 className={styles.storyTitle}>{title}</h1>
       <div className={styles.storyText}>{bodyText}</div>
-      {scrollable && <div className={styles.scrollIndicator}>↓</div>}
+      {isScrollable && <div className={styles.scrollIndicator}>↓</div>}
     </div>
   );
 };

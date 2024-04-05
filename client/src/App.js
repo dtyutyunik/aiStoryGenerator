@@ -11,19 +11,18 @@ function App() {
   const [errorMsg, setErrorMsg] = useState("");
   const [progress, setProgress] = useState(0);
   const [generatedStory, setGeneratedStory] = useState("");
-  const [firstRender, setFirstRender] = useState(false);
-  const [scrollable, setScrollable] = useState(false);
+  const [firstRender, setFirstRender] = useState(true);
 
   const speedOfGeneration = (length) => {
     switch (length) {
       case "short":
-        return 600;
+        return 500;
       case "medium":
         return 800;
       case "long":
         return 1100;
       default:
-        return 800;
+        return 500;
     }
   };
 
@@ -46,14 +45,12 @@ function App() {
     setIsStoryCreated(false);
     const interval = simulateProgress(speedOfProgressBar);
     setFirstRender(false);
-    setScrollable(false);
 
     try {
       const story = await storyGeneratorCall(formData, length);
       clearInterval(interval);
       setProgress(100);
       setGeneratedStory(story);
-      // interval>700?setScrollable(true):setScrollable(false)
       setErrorMsg("");
       setIsStoryCreated(true);
     } catch (error) {
@@ -61,7 +58,6 @@ function App() {
       clearInterval(interval);
       setErrorMsg("Failed to generate story");
       setIsStoryCreated(false);
-      setScrollable(false)
     }
   };
 
@@ -81,7 +77,7 @@ function App() {
         {firstRender ? (
           <Intro />
         ) : isStoryCreated ? (
-          <GeneratedResult story={generatedStory} scrollable={scrollable} />
+          <GeneratedResult story={generatedStory} />
         ) : (
           <Loader progress={progress} />
         )}
